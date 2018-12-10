@@ -9,7 +9,7 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
-         Aaron Wilkin, their colleagues, and PUT_YOUR_NAME_HERE.
+         Aaron Wilkin, their colleagues, and Luke Spannan.
 """  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
@@ -109,6 +109,17 @@ def draw_parallel_lines(n, point, length, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
+    point = rg.Point(point.x,point.y)
+    point2 =rg.Point((point.x+length),point.y)
+    line = rg.Line(point,point2)
+    line.attach_to(window)
+    point.attach_to(window)
+    for k in range (n):
+        line = rg.Line(point, point2)
+        line.attach_to(window)
+        point = rg.Point((point.x), (point.y+30))
+        point2 = rg.Point((point.x+length), (point.y))
+    window.render()
 
 
 def run_test_draw_lines():
@@ -174,7 +185,19 @@ def draw_lines(n, point, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
+    sample = rg.Point(point.x,point.y)
+    sample2 = rg.Point(point.x+100,(point.y-100))
+    #sample2.attach_to(window)
+    sampleLine = rg.Line(sample,sample2)
+    #sampleLine.attach_to(window)
+    #sample.attach_to(window)
 
+    delta_y=200/(n-1)
+    for k in range (n):
+        line =rg.Line(sample,sample2)
+        line.attach_to(window)
+        sample2= rg.Point(sample.x+100,sample2.y+delta_y)
+    window.render()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.

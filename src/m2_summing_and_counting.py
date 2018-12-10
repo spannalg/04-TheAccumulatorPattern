@@ -22,6 +22,7 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
 #        -- IN the loop?
 #        -- AFTER the loop?
 # -----------------------------------------------------------------------------
+import math
 def main():
     """ Calls the   TEST   functions in this module. """
     run_test_sum_more_cosines()
@@ -98,6 +99,11 @@ def sum_more_cosines(m, n):
     #   Just   range(blah)   where blah is a single variable.
     #   Reason: To ensure that you get more practice using expressions.
     # -------------------------------------------------------------------------
+    count = 0
+    for k in range (n+1-m):
+        count= count+ math.cos(m+k)
+    return count
+
 
 
 def run_test_count_sines_from():
@@ -154,7 +160,11 @@ def count_sines_from(m, n):
     #   you must NOT use the 2 or 3-parameter versions
     #   of the RANGE expression, if you happen to know them.
     # -------------------------------------------------------------------------
-
+    count = 0
+    for k in range (n+1-m):
+        if math.sin(m+k)<.5:
+            count= count + 1
+    return count
 
 def run_test_count_sines_vs_cosines():
     """ Tests the   count_sines_vs_cosines   function. """
@@ -216,7 +226,11 @@ def count_sines_vs_cosines(m):
     #   you must NOT use the 2 or 3-parameter versions
     #   of the RANGE expression, if you happen to know them.
     # -------------------------------------------------------------------------
-
+    count = 0
+    for k in range ((m*2)+1):
+        if math.sin(-m+k)> math.cos(-m+k):
+            count= count + 1
+    return count
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
